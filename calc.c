@@ -48,8 +48,8 @@ int chk_input(int ok){
     return 1;
 }
 
-double calc_res(double num1, double num2, char op, double *sol){
-    switch (op){
+double calc_res(double num1, double num2, char *op, double *sol){
+    switch (*op){
         case '+': *sol = func_soma(num1, num2);
                   break;
         case '-': *sol = func_subtrai(num1, num2);
@@ -82,7 +82,7 @@ int main(int argc, char *argv[]){
     do{
         op = main_menu();
         if(op != 'q'){
-            sol = calc_res(num1, num2, op, &sol);
+            sol = calc_res(num1, num2, &op, &sol);
             printf("Resultado: %lf %c %lf = %lf\n", num1, op, num2, sol);
             return 0;
         }
