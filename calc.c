@@ -12,7 +12,7 @@ double func_subtrai(double var1, double var2){
 }
 
 double func_multiplica(double var1, double var2){
-    double res;
+    //double res;
     
     return var1 * var2;
     /*res = var1 * var2;
@@ -52,7 +52,7 @@ int chk_input(int ok){
     return 1;
 }
 
-double calc_res(double num1, double num2, char *op, double *sol){
+void calc_res(double num1, double num2, char *op, double *sol){
     switch (*op){
         case '+': *sol = func_soma(num1, num2);
                   break;
@@ -68,9 +68,8 @@ double calc_res(double num1, double num2, char *op, double *sol){
                          }
                   break;
         default : printf("Erro desconhecido!\n");
-                  return -1.0;
+                  exit(0);
     }
-    return 0;
 }
 
 int main(int argc, char *argv[]){
@@ -86,7 +85,7 @@ int main(int argc, char *argv[]){
     do{
         op = main_menu();
         if(op != 'q'){
-            sol = calc_res(num1, num2, &op, &sol);
+            calc_res(num1, num2, &op, &sol);
             printf("Resultado: %lf %c %lf = %lf\n", num1, op, num2, sol);
             return 0;
         }
