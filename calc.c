@@ -14,8 +14,9 @@ double func_subtrai(double var1, double var2){
 double func_multiplica(double var1, double var2){
     double res;
     
-    res = var1 * var2;
-    return res;
+    return var1 * var2;
+    /*res = var1 * var2;
+    return res;*/
 }
 
 double func_divide(double var1, double var2){
