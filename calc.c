@@ -3,24 +3,24 @@
 
 #define CLEAR_INPUT while(getchar() != '\n') /*void*/
 
-double func_soma(double *var1, double *var2){
-    return *var1 + (*var2);
+double func_soma(double var1, double var2){
+    return var1 + var2;
 }
 
-double func_subtrai(double *var1, double *var2){
-    return *var1 - (*var2);
+double func_subtrai(double var1, double var2){
+    return var1 - var2;
 }
 
-double func_multiplica(double *var1, double *var2){
-    return *var1 * (*var2);
+double func_multiplica(double var1, double var2){
+    return var1 * var2;
 }
 
-double func_divide(double *var1, double *var2){
+double func_divide(double var1, double var2){
     if(var2 == 0){
         printf("Impossível dividir por zero!\n");
         return 0;
     }else{
-        return *var1/(*var2);
+        return var1 / var2;
     }
 }
 
@@ -28,11 +28,11 @@ char main_menu(void){
     int ok=0;
     char op;
 
-    printf("Escolha \"+\", \"-\", \"x\" ou \"/\"\n");
+    printf("Escolha \"+\", \"-\", \"*\" ou \"/\"\n");
     CLEAR_INPUT;
     do{
         ok = fscanf(stdin, "%c", &op);
-        printf("ok: %d op: %c\n", ok, op);
+        //printf("ok: %d op: %c\n", ok, op);
         if(ok == 0){
             printf("Não introduziu qualquer operador. Por favor introduza um:\n");
         }
@@ -48,16 +48,16 @@ int chk_input(int ok){
     return 1;
 }
 
-double calc_res(double num1, double num2, char op){
+double calc_res(double num1, double num2, char op, double *sol){
     switch (op){
-        case '+': return num1 + num2;
+        case '+': *sol = func_soma(num1, num2);
                   break;
-        case '-': return num1 - num2;
+        case '-': *sol = func_subtrai(num1, num2);
                   break;
-        case '*': return num1 * num2;
+        case '*': *sol = func_multiplica(num1, num2);
                   break;
         case '/': if (num2 != 0)
-                            return num1 / num2;
+                            *sol = func_divide(num1, num2);
                          else{
                             printf("Impossível dividir por zero!\n");
                             exit(0);
@@ -82,7 +82,7 @@ int main(int argc, char *argv[]){
     do{
         op = main_menu();
         if(op != 'q'){
-            sol = calc_res(num1, num2, op);
+            sol = calc_res(num1, num2, op, &sol);
             printf("Resultado: %lf %c %lf = %lf\n", num1, op, num2, sol);
             return 0;
         }
