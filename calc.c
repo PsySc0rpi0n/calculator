@@ -12,11 +12,8 @@ double func_subtrai(double var1, double var2){
 }
 
 double func_multiplica(double var1, double var2){
-    //double res;
     
     return var1 * var2;
-    /*res = var1 * var2;
-    return res;*/
 }
 
 double func_divide(double var1, double var2){
@@ -36,7 +33,6 @@ char main_menu(void){
     CLEAR_INPUT;
     do{
         ok = fscanf(stdin, "%c", &op);
-        //printf("ok: %d op: %c\n", ok, op);
         if(ok == 0){
             printf("Não introduziu qualquer operador. Por favor introduza um:\n");
         }
@@ -61,11 +57,11 @@ void calc_res(double num1, double num2, char *op, double *sol){
         case '*': *sol = func_multiplica(num1, num2);
                   break;
         case '/': if (num2 != 0)
-                            *sol = func_divide(num1, num2);
-                         else{
-                            printf("Impossível dividir por zero!\n");
-                            exit(0);
-                         }
+                    *sol = func_divide(num1, num2);
+                  else{
+                    printf("Impossível dividir por zero!\n");
+                    exit(0);
+                  }
                   break;
         default : printf("Erro desconhecido!\n");
                   exit(0);
@@ -80,7 +76,7 @@ int main(int argc, char *argv[]){
     do{
         CLEAR_INPUT;
         ok = chk_input(fscanf(stdin, "%lf %lf", &num1, &num2));
-        //printf("num1: %lf num2: %lf ok: %d\n", num1, num2, ok);
+        printf("ok = %d\nnum1 = %lf\n num2 = %lf\n", ok, num1, num2);
     }while(ok == 0);
     
     do{
