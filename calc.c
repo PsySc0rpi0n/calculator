@@ -78,6 +78,7 @@ int main(int argc, char *argv[]){
     
     printf("Introduza dois algarismos pressionando \"Enter\" após cada um:\n");
     do{
+        CLEAR_INPUT;
         ok = chk_input(fscanf(stdin, "%lf %lf", &num1, &num2));
         //printf("num1: %lf num2: %lf ok: %d\n", num1, num2, ok);
     }while(ok == 0);
